@@ -8,14 +8,11 @@ const (
 	// DevDomainURL is domain URL for development environment.
 	DevDomainURL = "https://oropay-dev.e-mas.com"
 	// ProdDomainURl is domain URL for production environment.
-	ProdDomainURl = "https://api.e-mas.com"
+	ProdDomainURL = "https://api.e-mas.com"
 	// DefaultEnvironment is default environment type value.
 	DefaultEnvironment = "dev"
 	// DefaultDebug is default debug boolean value.
 	DefaultDebug = true
-
-	PathAuthorization = "/v1/sso/auth"
-	PathLogout        = "/v1/sso/logout"
 )
 
 // Client is e-mas SSO client.
@@ -65,19 +62,25 @@ func New(clientName string, clientCredentials ...string) *Client {
 	return &c
 }
 
-// Default to create default e-mas SSO client.
-func Default() *Client {
-	c := DefaultClient
-	c.init()
-	return &c
-}
-
 // init to initiate field values in client.
 func (c *Client) init() {
 	c.DomainURL = DevDomainURL
 	if c.Environment == Prod {
-		c.DomainURL = ProdDomainURl
+		c.DomainURL = ProdDomainURL
 	}
+}
+
+// SetClientName to set client name.
+func (c *Client) SetClientName(clientName string) *Client {
+	c.ClientName = clientName
+	return c
+}
+
+// SetClientCredential to set client id and secret.
+func (c *Client) SetClientCredential(clientId, clientSecret string) *Client {
+	c.ClientId = clientId
+	c.ClientSecret = clientSecret
+	return c
 }
 
 // SetEnv to set client environment. This will set domain

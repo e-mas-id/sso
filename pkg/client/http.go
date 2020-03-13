@@ -38,6 +38,13 @@ func (c *Client) getAuthHeader() string {
 	return "Basic " + auth
 }
 
+// AddQueryParam to add query param in URL.
+func (c *Client) AddQueryParam(request *http.Request, key, value string) {
+	query := request.URL.Query()
+	query.Add(key, value)
+	request.URL.RawQuery = query.Encode()
+}
+
 // NewRequest to create new request for SSO.
 func (c *Client) NewRequest(method string, path string, body io.Reader, headers ...map[string]string) (*http.Request, error) {
 	// Init http new request.

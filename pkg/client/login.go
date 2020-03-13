@@ -30,9 +30,9 @@ type LoginResponse struct {
 // Can be used by clients to provide general customer
 // data for registering in their website.
 type CustomerData struct {
-	Email  string `json:"email"`
-	Phone  string `json:"phone"`
-	Name   string `json:"name"`
+	Email string `json:"email"`
+	Phone string `json:"phone"`
+	Name  string `json:"name"`
 }
 
 // Login to login e-mas SSO with username/password or token.

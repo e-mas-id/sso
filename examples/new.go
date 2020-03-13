@@ -7,7 +7,13 @@ import (
 
 func main() {
 	// Create new client with your own client name.
-	c := client.New("skrap")
+	c := client.New("randomName")
+
+	// Set client name (if you have more than 1 clients).
+	c.SetClientName("randomName2")
+
+	// Set client id and secret if you have.
+	c.SetClientCredential("cId", "cSecret")
 
 	// Set environment.
 	c.SetEnv(client.Dev)
@@ -26,14 +32,28 @@ func main() {
 	}
 
 	// Login with username & password.
-	customer, err := c.Login("axel.oktavian@orori.com", "123456")
+	customer, err := c.Login("e-mas@mail.com", "123456")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	// Login with access token.
+	// Authorize SSO login (for the first time only).
+	err = c.Authorize()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Login with access token. Now return customer data.
 	customer, err = c.Login()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	// Logout SSO login.
+	err = c.Logout()
 	if err != nil {
 		fmt.Println(err)
 		return
