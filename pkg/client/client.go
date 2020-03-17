@@ -7,7 +7,7 @@ const (
 	Prod = "prod"
 	// DevDomainURL is domain URL for development environment.
 	DevDomainURL = "https://oropay-dev.e-mas.com"
-	// ProdDomainURl is domain URL for production environment.
+	// ProdDomainURL is domain URL for production environment.
 	ProdDomainURL = "https://api.e-mas.com"
 	// DefaultEnvironment is default environment type value.
 	DefaultEnvironment = "dev"
