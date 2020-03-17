@@ -28,11 +28,12 @@ type LoginResponse struct {
 
 // CustomerData is customer data returned after login.
 // Can be used by clients to provide general customer
-// data for registering in their website.
+// data for registering on their website.
 type CustomerData struct {
-	Email string `json:"email"`
-	Phone string `json:"phone"`
-	Name  string `json:"name"`
+	Email  string `json:"email"`
+	Phone  string `json:"phone"`
+	Name   string `json:"name"`
+	Gender string `json:"gender"`
 }
 
 // Login to login e-mas SSO with username/password or token.
@@ -91,6 +92,7 @@ func (c *Client) Login(userPass ...string) (data CustomerData, err error) {
 	data.Email = loginResponse.Data.Email
 	data.Phone = loginResponse.Data.Phone
 	data.Name = loginResponse.Data.Name
+	data.Gender = loginResponse.Data.Gender
 
 	return data, nil
 }

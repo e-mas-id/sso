@@ -1,5 +1,6 @@
-// Let's borrow logger package
-// https://github.com/rl404/go-malscraper/blob/master/pkg/mallogger/mallogger.go
+// Package utils contains some helper functions especially for logging.
+// Let's borrow logger package.
+// https://github.com/rl404/go-malscraper/blob/master/pkg/mallogger/mallogger.go.
 package utils
 
 import (
